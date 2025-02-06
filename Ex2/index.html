@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- <div class="all-input"> -->
+            <label for="Task">Task:</label>
+            <input type="text" name="" id="fill-form"><br><br>
+            <label for="priority">Priority:</label>
+            <select name="priority" id="">
+                <option value="1">High</option>
+                <option value="0">Low</option>
+            </select><br><br>
+            <button onclick="addValue()">Add Task</button>
+        <!-- </div> -->
+    </div>
+    <div id="tasksContainer">
+        <script>
+            let tasks = [
+                {descriptions: "Task 1", priority :1},
+                {descriptions: "Task 2", priority :0},
+                {descriptions: "Task 3", priority :1},
+            ]
+            function displayTasks(tasks) {
+                let showTask = document.getElementById("tasksContainer");
+                let teamHTML = `<div class='task_wrapper'>`;
+                tasks.forEach((tasks) => {
+                    let bg = tasks.priority === 1 ? 'red':'grey';
+                    teamHTML += `
+                        <div class = "task_display" style = "background-color: ${bg};">
+                            <p>${tasks.descriptions}</p>
+                        </div>
+                    `
+                });
+                teamHTML += `</div>`;
+                showTask.innerHTML = teamHTML;
+            }
+            document.addEventListener("DOMContentLoaded", () => {
+                    displayTasks(tasks);
+            })
+            function addValue(tasks) {
+                let taskInput = document.getElementById("fill-form").value.trim();
+                let priorityType = document.getElementById("priority").value;
+                if (taskInput !== "") {
+                    tasks.push({descriptions: taskInput, priority:parseInt(priorityType)});
+                    displayTasks(tasks);
+                    document.getElementById("fill-form").value = "";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
