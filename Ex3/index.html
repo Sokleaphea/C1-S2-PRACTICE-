@@ -16,7 +16,10 @@
                 <option value="1">High</option>
                 <option value="0">Low</option>
             </select><br><br>
-            <button onclick="addValue()">Add Task</button>
+            <button onclick="addValue()">Add Task</button><br><br>
+            <button onclick="importantTask()">Show only important tasks</button><br><br>
+            <button onclick="nonImportantTask()">Show the tasks that are not important</button><br><br>
+            <button onclick="displayTasks(tasks)">Show all tasks</button>
         <!-- </div> -->
     </div>
     <div id="tasksContainer">
@@ -51,6 +54,14 @@
                     displayTasks(tasks);
                     document.getElementById("fill-form").value = "";
                 }
+            }
+            function importantTask() {
+                let importantTask = tasks.filter(task => task.priority == 1);
+                displayTasks(importantTask);
+            }
+            function nonImportantTask() {
+                let nonImportantTask = tasks.filter(task => task.priority == 0);
+                displayTasks(nonImportantTask);
             }
         </script>
     </div>

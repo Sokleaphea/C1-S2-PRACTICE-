@@ -1,0 +1,17 @@
+.all-input {
+    display: flex;
+    
+}
+#tasksContainer {
+    display: flex;
+    justify-content: end;
+}
+.task_wrapper {
+    margin: 20px;
+    text-align: center;
+}
+.task_display {
+    background-color: red;
+    width: 250px;
+    padding: 50px;
+}
